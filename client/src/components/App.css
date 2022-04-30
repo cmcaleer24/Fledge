@@ -1,0 +1,898 @@
+.body {
+    overflow: auto;
+}
+
+.bg-myNavBackground {
+    background-color: darkslategray;
+}
+
+.navigation {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    margin-bottom: 0%;
+}
+
+.content {
+    margin-top: 30px;
+    padding: 12px;
+    height: 3000px;
+}
+
+video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+}
+
+.hero {
+    background: url("https://www.thespruce.com/thmb/_aWSIt4nnacTIemT8yX1YYlLIuU=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Bird-GettyImages-582446599-58ec5c4d5f9b58ef7e24e7f4.jpg") center center/cover no-repeat;
+    height: 45vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroBird {
+    background: url("https://www.thespruce.com/thmb/_aWSIt4nnacTIemT8yX1YYlLIuU=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Bird-GettyImages-582446599-58ec5c4d5f9b58ef7e24e7f4.jpg") center center/cover no-repeat;
+    height: 45vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroFeed {
+    background: url("https://cdn.pixabay.com/photo/2018/11/30/10/13/winter-feeding-3847425__340.jpg") center center/cover no-repeat;
+    height: 35vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.main-body {
+    padding-top: 80px;
+}
+
+.main-body-dark {
+    padding-top: 80px;
+    background-color: lightgray;
+}
+
+.heroForums {
+    background: url("https://cdn.pixabay.com/photo/2017/09/17/21/59/sparrows-2759978__340.jpg") center center/cover no-repeat;
+    height: 35vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroMessages {
+    background: url("https://cdn.pixabay.com/photo/2019/10/15/08/02/fly-4551002_1280.jpg") center center/cover no-repeat;
+    height: 35vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroGuides {
+    background: url("https://cdn.pixabay.com/photo/2014/05/06/19/00/adler-339125_960_720.jpg") center center/cover no-repeat;
+    height: 35vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroInfo {
+    background: url("https://cdn.pixabay.com/photo/2017/11/30/11/57/barn-owl-2988291_1280.jpg") center center/cover no-repeat;
+    height: 35vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroProfile {
+    background: url("https://cdn.pixabay.com/photo/2018/09/24/11/02/animal-world-3699633_960_720.jpg") center center/cover no-repeat;
+    height: 20vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroBirdwatching {
+    background: url("https://cdn.pixabay.com/photo/2014/05/06/19/00/adler-339125_960_720.jpg") center center/cover no-repeat;
+    height: 35vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroEquipment {
+    background: url("https://cdn.pixabay.com/photo/2020/06/04/07/16/telescope-5257599_960_720.jpg") center center/cover no-repeat;
+    height: 35vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroLegislation {
+    background: url("https://cdn.pixabay.com/photo/2014/05/06/19/00/adler-339125_960_720.jpg") center center/cover no-repeat;
+    height: 35vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroCat {
+    height: 35vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.profile-image {
+    height: 18vh;
+    width: 18vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 1rem;
+}
+
+.home-card-image {
+    height: 180px;
+    object-fit: cover;
+}
+
+.map-image {
+    height: 13vh;
+    width: 13vh;
+    display: block;
+    text-align: center;
+}
+
+.profile-image-nav {
+    height: 5vh;
+    width: 5vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-image-forum {
+    height: 7vh;
+    width: 7vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-image-feed {
+    height: 4.5vh;
+    width: 4.5vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-image-reply {
+    height: 5vh;
+    width: 5vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.container {
+    column-count: 2;
+    column-gap: 20px;
+    display: flex;
+    padding: 1rem 2.5rem 1rem 2.5rem;
+    max-width: 94%;
+    table-layout: fixed;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    margin: 3%;
+}
+
+.container-empty {
+    column-count: 2;
+    column-gap: 20px;
+    display: flex;
+    max-width: 94%;
+    table-layout: fixed;
+}
+
+.border-box {
+    display: flex;
+    padding: 1rem 2.5rem 1rem 2.5rem;
+    max-width: 94%;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    margin: 3%;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    height: 100%;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    transition: all 500ms;
+    overflow: hidden;
+}
+
+.column-left {
+    column-span: 2;
+    float: left;
+    column-width: 100%;
+    width: 66%;
+    position: relative;
+}
+
+.column-left-50 {
+    column-span: 2;
+    float: left;
+    column-width: 50%;
+    width: 49%;
+    position: relative;
+}
+
+.column-right {
+    column-span: 1;
+    float: right;
+    column-width: 50%;
+    width: 33%;
+}
+
+.column-right-50 {
+    column-span: 1;
+    float: right;
+    column-width: 50%;
+    width: 49%;
+    position: relative;
+}
+
+@media screen and (max-width: 600px) {
+    .column-one {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .column-two {
+        width: 100%;
+    }
+}
+
+.heroLogin {
+    background: url("https://cdn.pixabay.com/photo/2013/04/04/12/34/mountains-100367_1280.jpg") center center/cover no-repeat;
+    height: 80vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroLogout {
+    background: url("https://cdn.pixabay.com/photo/2020/06/08/15/58/robin-5274931_960_720.jpg") center center/cover no-repeat;
+    height: 60vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroRegister {
+    background: url("https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_1280.jpg") center center/cover no-repeat;
+    height: 80vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.hero2 {
+    height: 60vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.card {
+    width: "18rem";
+    align-items: left;
+}
+
+.myCard3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    transition: all 500ms;
+    overflow: hidden;
+    padding: 30px;
+}
+
+.myCard4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    transition: all 500ms;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.footer {
+    background: #212529;
+    color: gainsboro;
+    padding: 2rem 1rem 6rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile {
+    padding: 2rem 1rem 6rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.emptyFoot {
+    background: #212529;
+    color: #212529;
+}
+
+.column-footer {
+    width: 20%;
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+.btn {
+    padding: 8px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-btn-container {
+    align-items: right;
+}
+
+.btn-add-reply {
+    color: white;
+    background-color: #212529;
+    margin-top: 5px;
+    padding: 8px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-add-post {
+    color: #212529;
+    background-color: white;
+    margin-top: 5px;
+    padding: 8px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-add-reply:hover {
+    color: #212529;
+    background-color: white;
+    transition: all 0.3s ease-out;
+}
+
+.btn-add-post:hover {
+    color: white;
+    background-color: #212529;
+    transition: all 0.3s ease-out;
+}
+
+.btn-message-select {
+    color: #212529;
+    background-color: white;
+    display: block;
+    height: max-content;
+    width: max-content;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+/* .btn-message-select:hover {
+    color: white;
+    background-color: #212529;
+    transition: all 0.3s ease-out;
+    border-radius: 5px;
+} */
+
+.btn-message-select-dark {
+    color: white;
+    background-color: #212529;
+    display: block;
+    height: max-content;
+    width: max-content;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+/* .btn-message-select-dark:hover {
+    color: #212529;
+    background-color: white;
+    transition: all 0.3s ease-out;
+    border-radius: 5px;
+} */
+
+.btn-trans-main {
+    background-color: transparent;
+    color: whitesmoke;
+    text-decoration: none;
+    width: 154px;
+    font-size: 20px;
+    padding: 12px 26px;
+    border: 1px solid gainsboro;
+    transition: all 0.3s ease-out;
+}
+
+.btn-main {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    width: 154px;
+    font-size: 20px;
+    padding: 12px 26px;
+    border: 1px solid gainsboro;
+    transition: all 0.3s ease-out;
+}
+
+.btn-pic-change {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    width: 150px;
+    font-size: 15px;
+    padding: 12px 26px;
+    border: 1px solid black;
+    transition: all 0.3s ease-out;
+}
+
+.btn-pic-change:hover {
+    background: #212529;
+    color: gainsboro;
+    text-decoration: none;
+    width: 150px;
+    font-size: 15px;
+    padding: 12px 26px;
+    border: 1px solid gainsboro;
+    transition: all 0.3s ease-out;
+}
+
+.btn-sighting {
+    color: white;
+    background-color: #212529;
+    text-decoration: none;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    padding: 12px 26px;
+    border-radius: 6px;
+    transition: all 0.3s ease-out;
+}
+
+.btn-sighting:hover {
+    background-color: white;
+    color: #212529;
+    text-decoration: none;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 6px;
+    padding: 12px 26px;
+    transition: all 0.3s ease-out;
+}
+
+.btn-trans-log {
+    background-color: transparent;
+    color: whitesmoke;
+    text-decoration: none;
+    width: 120px;
+    font-size: 18px;
+    padding: 10px 16px;
+    margin: 20px 20px 20px 0px;
+    border: 1px solid gainsboro;
+    transition: all 0.3s ease-out;
+}
+
+.btn-trans-foot {
+    background-color: transparent;
+    color: whitesmoke;
+    text-decoration: none;
+    width: 154px;
+    font-size: 20px;
+    padding: 8px 20px;
+    border: 1px solid rgb(240, 73, 73);
+    position: relative;
+    z-index: -1;
+}
+
+.btn-trans-main:hover {
+    text-decoration: none;
+    background: white;
+    color: black;
+    width: 154px;
+    transition: all 0.3s ease-out;
+}
+
+.btn-trans-log:hover {
+    text-decoration: none;
+    background: white;
+    color: black;
+    width: 120px;
+    transition: all 0.3s ease-out;
+}
+
+.btn-trans-foot:hover {
+    text-decoration: none;
+    background: gainsboro;
+    color: #262626;
+    width: 154px;
+    transition: all 0.3s ease-out;
+}
+
+.button-column {
+    background-color: white;
+    position: relative;
+    margin: 0;
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+}
+
+.myCard {
+    padding: 30px;
+    height: 300px;
+}
+
+.myCard2 {
+    margin-top: 13px;
+    margin-bottom: 13px;
+    padding-left: 25px;
+    color: black;
+    text-align: left;
+    justify-content: left;
+    align-items: left;
+}
+
+.forum-card {
+    margin: 3%;
+    background-color: white;
+    color: black;
+    text-align: left;
+    justify-content: left;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    height: 100%;
+    width: 94%;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    transition: all 500ms;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+}
+
+.forum-card-reversed {
+    margin: 3%;
+    background-color: #212529;
+    color: white;
+    text-align: left;
+    justify-content: left;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 94%;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    transition: all 500ms;
+    overflow: hidden;
+}
+
+.forum-card-reversed-full {
+    background-color: #212529;
+    color: white;
+    text-align: left;
+    justify-content: left;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 94%;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    transition: all 500ms;
+    overflow: hidden;
+    height: 100%;
+}
+
+.text-area-assign-height {
+    height: 164px;
+}
+
+.forum-card-select {
+    margin: 3%;
+    background-color: lightgray;
+    color: #212529;
+    text-align: left;
+    justify-content: left;
+    align-items: left;
+    justify-content: center;
+    align-items: left;
+    height: 100%;
+    width: 94%;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    transition: all 500ms;
+    overflow: hidden;
+}
+
+.text-titles {
+    color: white;
+}
+
+.reply-card {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    color: black;
+    text-align: left;
+    justify-content: left;
+    align-items: left;
+    border-radius: 4px;
+    border-color: dimgray;
+}
+
+.myCardInfo {
+    width: 100px;
+    height: 200px;
+    margin-top: 25px;
+    padding: 25px;
+    color: white;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    height: 100%;
+    width: 97%;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    transition: all 500ms;
+    overflow: hidden;
+}
+
+.card:hover {
+    box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em, rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
+    transform: translateY(-1px) scale(1.025);
+}
+
+.basic-grid {
+    margin: 2rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 2fr));
+}
+
+.cardImg {
+    width: 100%;
+    height: 27vw;
+    object-fit: cover;
+}
+
+.gridCard {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    height: 100%;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    transition: all 500ms;
+    overflow: hidden;
+}
+
+.gridCard:hover {
+    box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em, rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
+    transform: translateY(-3px) scale(1.1);
+}
+
+.birdCard {
+    margin: 3rem;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    height: 100%;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    transition: all 500ms;
+    overflow: hidden;
+}
+
+.birdItem {
+    margin: 5px;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.myImg {
+    max-width: 600px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.inline-container {
+    display: flex;
+    justify-content: left;
+    text-align: center;
+    align-items: center;
+}
