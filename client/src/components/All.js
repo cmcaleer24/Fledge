@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
 function All() {
-  const [objectArray, setObjectArray] = useState([]);
+  const [birdArray, setBirdArray] = useState([]);
 
   useEffect(() => {
     Axios.get('http://localhost:3001/api/getAll').then((response) => {
-      setObjectArray(response.data);
+      setBirdArray(response.data);
     });
   }, []);
 
@@ -29,15 +29,15 @@ function All() {
         </div>
       </div>
       <section class="basic-grid">
-        {objectArray.map((val) => {
+        {birdArray.map((bird) => {
           return (
             <>
-              <Link to={`../Bird/${val.id}`} class="gridCard">
-                <Card.Img variant="top" src={val.img} class="cardImg" />
+              <Link to={`../Bird/${bird.id}`} class="gridCard">
+                <Card.Img variant="top" src={bird.img} class="cardImg" />
                 <Card.Body>
-                  <Card.Title> {val.name} </Card.Title>
+                  <Card.Title> {bird.name} </Card.Title>
                   <Card.Text>
-                    <em> {val.sciName} </em>
+                    <em> {bird.sciName} </em>
                   </Card.Text>
                 </Card.Body>
               </Link>

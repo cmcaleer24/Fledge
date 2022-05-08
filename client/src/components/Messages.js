@@ -1,18 +1,18 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Card, Nav } from 'react-bootstrap';
 
-function Messages() {
+function Messages(props) {
   const [recArray, setRecArray] = useState([]);
   const [sentArray, setSentArray] = useState([]);
-  const { user } = useParams(undefined);
+  const user = props.userName;
   const [showSent, setShowSent] = useState(false);
-  const [replyFormState, setReplyFormState] = useState(false);
-  const [showForm, setShowForm] = useState(false);
+  const [replyForm, setReplyForm] = useState(false);
+  const [replyFormState, setReplyFormState] = useState({});
   const [userId, setUserId] = useState('');
   const [propId, setPropId] = useState('');
   const [text, setText] = useState('');
@@ -24,7 +24,7 @@ function Messages() {
         setRecArray(response.data);
       }
     );
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     Axios.get(`http://localhost:3001/api/getSentMessages/${user}`).then(
@@ -32,15 +32,14 @@ function Messages() {
         setSentArray(response.data);
       }
     );
-  }, []);
+  }, [user]);
 
   const addMessage = () => {
-    Axios.post('http://localhost:3001/api/addMessage', {
+    Axios.post('http://localhost:3001/api/addMessageReply', {
       propId,
       userId,
       text,
-    });
-    navigate(`/messages/${user}`);
+    }).then(navigate(`/messages/${user}`));
   };
 
   return (
@@ -48,7 +47,7 @@ function Messages() {
       <div className="heroMessages">
         <h1 class="display-4"> Your Message History </h1>{' '}
       </div>{' '}
-      {!showSent && (
+      {!showSent ? (
         <div className="forum-card-select">
           <div class="row">
             <div class="column" className="button-column">
@@ -75,8 +74,7 @@ function Messages() {
             </div>
           </div>
         </div>
-      )}
-      {showSent && (
+      ) : (
         <div className="forum-card-select">
           <div class="row">
             <div class="column" className="button-column">
@@ -105,54 +103,60 @@ function Messages() {
         </div>
       )}
       {!showSent &&
-        recArray.map((val) => {
+        recArray.map((message) => {
           return (
             <>
-              <Card className="myCard4">
+              <Card className="my-card-2">
                 <Card.Body>
                   <Nav.Link
                     as={Link}
                     className="ms-auto"
-                    to={`/profile/${val.from_user_username}`}
+                    to={`/profile/${message.from_user_username}`}
                   >
                     <Card.Title>
                       <div className="inline-container">
                         <img
                           class="profile-image-forum"
-                          src={val.from_user_photo}
+                          src={message.from_user_photo}
                         ></img>
-                        <div>&nbsp;{val.from_user_username}</div>
+                        <div>&nbsp;{message.from_user_username}</div>
                       </div>
                     </Card.Title>
                   </Nav.Link>
                   <Card.Text>
-                    <em> {val.message} </em>
+                    <em> {message.message} </em>
                   </Card.Text>
-                  <div align="right">
-                    <a
-                      class="btn-add-reply"
-                      role="button"
-                      onClick={() => {
-                        setPropId(val.from_user_id);
-                        setUserId(val.to_id);
-                        setReplyFormState({
-                          ...replyFormState,
-                          [val.id]: replyFormState[val.id]
-                            ? !replyFormState[val.id]
-                            : true,
-                        });
-                      }}
-                    >
-                      Reply
-                    </a>
-                  </div>
-                  {replyFormState[val.id] && (
+                  {!replyForm && (
                     <>
-                      <div className="forum-card-reversed">
+                      <div align="right">
+                        <a
+                          class="btn-add-reply"
+                          role="button"
+                          onClick={() => {
+                            setPropId(message.from_user_id);
+                            setUserId(message.to_id);
+                            setReplyForm(true);
+                            setReplyFormState({
+                              ...replyFormState,
+                              [message.id]: replyFormState[message.id]
+                                ? !replyFormState[message.id]
+                                : true,
+                            });
+                          }}
+                        >
+                          Reply
+                        </a>
+                      </div>
+                    </>
+                  )}
+
+                  {replyFormState[message.id] && (
+                    <>
+                      <div className="dark-form">
                         <Card.Body>
                           <div align="center">
                             <h5 className="text-titles">
-                              Reply to {val.from_user_username}
+                              Reply to {message.from_user_username}
                             </h5>
                           </div>
                           <form>
@@ -191,7 +195,7 @@ function Messages() {
         sentArray.map((val) => {
           return (
             <>
-              <Card className="myCard4">
+              <Card className="my-card-2">
                 <Card.Body>
                   <Nav.Link
                     as={Link}

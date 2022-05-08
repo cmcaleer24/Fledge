@@ -6,8 +6,6 @@ import { useAppContext } from '../store';
 import { useNavigate, Link } from 'react-router-dom';
 
 function Login() {
-  Axios.defaults.withCredentials = true;
-
   const appState = useAppContext();
   const navigate = useNavigate();
   const [username, setUsername] = useState('');

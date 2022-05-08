@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
 function Info() {
-  const [objectArray, setObjectArray] = useState([]);
+  const [categoryArray, setCategoryArray] = useState([]);
 
   useEffect(() => {
     Axios.get('http://localhost:3001/api/getCategories').then((response) => {
-      setObjectArray(response.data);
+      setCategoryArray(response.data);
     });
   }, []);
 
@@ -29,13 +29,13 @@ function Info() {
       </div>
 
       <section class="basic-grid">
-        {objectArray.map((val) => {
+        {categoryArray.map((cat) => {
           return (
             <>
-              <Link to={`../category/${val.id}`} className="gridCard">
-                <Card.Img variant="top" src={val.photo} className="cardImg" />
+              <Link to={`../category/${cat.id}`} className="gridCard">
+                <Card.Img variant="top" src={cat.photo} className="cardImg" />
                 <Card.Body>
-                  <Card.Title> {val.category} </Card.Title>
+                  <Card.Title> {cat.category} </Card.Title>
                 </Card.Body>
               </Link>
             </>

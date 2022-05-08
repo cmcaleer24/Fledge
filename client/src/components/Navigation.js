@@ -35,11 +35,11 @@ function Navigation(props) {
           <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav className="container-fluid">
-              <Nav.Link as={Link} to="/feed">
-                Feed
-              </Nav.Link>
               <Nav.Link as={Link} to="/info">
                 Birds
+              </Nav.Link>
+              <Nav.Link as={Link} to="/feed">
+                Feed
               </Nav.Link>
               <Nav.Link as={Link} to="/forums">
                 Forums
@@ -48,12 +48,11 @@ function Navigation(props) {
                 Guides
               </Nav.Link>
 
-              {!isLoggedIn && (
+              {!isLoggedIn ? (
                 <Nav.Link as={Link} className="ms-auto" to="/login">
                   Login
                 </Nav.Link>
-              )}
-              {isLoggedIn && (
+              ) : (
                 <NavDropdown className="ms-auto" title={user} bg="dark">
                   <NavDropdown.Item as={Link} to={`/profile/${user}`}>
                     My Profile

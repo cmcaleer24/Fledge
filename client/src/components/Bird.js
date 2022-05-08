@@ -1,10 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import { Card, Nav } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getDownloadURL, ref, uploadBytesResumable } from '@firebase/storage';
+import { ref, uploadBytesResumable, getDownloadURL } from '@firebase/storage';
 import { storage } from '../firebase/index';
 import { useAppContext } from '../store';
 import { useNavigate } from 'react-router-dom';
@@ -25,8 +25,6 @@ function Bird(props) {
   const lat = props.latitude;
   const long = props.longitude;
   const [sightingsArray, setSightingsArray] = useState([]);
-  const [thisSighting, setThisSighting] = useState(null);
-  const [showSightForm, setShowSightForm] = useState(false);
   const [bird, setBird] = useState(undefined);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -52,6 +50,7 @@ function Bird(props) {
 
   const uploadFiles = async (file) => {
     if (!file) return;
+
     const storageRef = ref(storage, `files/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -116,7 +115,6 @@ function Bird(props) {
   useEffect(() => {
     Axios.get(`http://localhost:3001/api/getBird/${id}`).then((response) => {
       setBird(response.data);
-      //setInterval(setBird(response.data), 3000);
     });
   }, []);
 
@@ -224,7 +222,7 @@ function Bird(props) {
 
           {isLoggedIn && lat && (
             <>
-              <div className="forum-card-reversed">
+              <div className="dark-form">
                 <Card.Body>
                   <div align="center">
                     <h5 className="text-titles">Add Sighting</h5>

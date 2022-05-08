@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Nav } from 'react-bootstrap';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { useAppContext } from '../store';
@@ -37,9 +37,6 @@ function Feed(props) {
   }, []);
 
   const addComment = () => {
-    // console.log('postId: ', postId);
-    // console.log('user: ', user);
-    // console.log('commentText: ', commentText);
     Axios.post(`http://localhost:3001/api/addSightingComment`, {
       sightingId,
       user,
@@ -58,7 +55,7 @@ function Feed(props) {
       {sightingsArray.map((sighting) => {
         return (
           <>
-            <Card className="myCard4">
+            <Card className="my-card-2">
               <Card.Body>
                 <Nav.Link
                   as={Link}
@@ -154,8 +151,6 @@ function Feed(props) {
                               : true,
                           });
                         }
-                        //if replyState[val.id] exists, return the opposite boolean
-                        //if not then its the first time its been clicked, so it is true
                       }
                     >
                       Add Comment
@@ -165,7 +160,7 @@ function Feed(props) {
                 {commentFormState[sighting.id] && (
                   <>
                     <br></br>
-                    <div className="forum-card-reversed">
+                    <div className="dark-form">
                       <Card.Body>
                         <div align="center">
                           <h5 className="text-titles">Add a Comment</h5>

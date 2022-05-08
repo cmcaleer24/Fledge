@@ -14,7 +14,7 @@ function Guides() {
 
       <div>
         <Nav.Link as={Link} to="/Birdwatching">
-          <Card className="myCard3">
+          <Card className="my-card">
             <Card.Img
               className="home-card-image"
               variant="bottom"
@@ -30,7 +30,7 @@ function Guides() {
         </Nav.Link>
 
         <Nav.Link as={Link} to="/Equipment">
-          <Card className="myCard3">
+          <Card className="my-card">
             <Card.Img
               className="home-card-image"
               variant="bottom"
@@ -46,7 +46,7 @@ function Guides() {
         </Nav.Link>
 
         <Nav.Link as={Link} to="/Legislation">
-          <Card className="myCard3">
+          <Card className="my-card">
             <Card.Img
               className="home-card-image"
               variant="bottom"

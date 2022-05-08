@@ -149,7 +149,7 @@ video {
 }
 
 .heroBirdwatching {
-    background: url("https://cdn.pixabay.com/photo/2014/05/06/19/00/adler-339125_960_720.jpg") center center/cover no-repeat;
+    background: url("https://media.istockphoto.com/photos/young-female-hunter-using-binoculars-for-bird-spotting-with-hungarian-picture-id1347188341?k=20&m=1347188341&s=612x612&w=0&h=yCd8O8Z6nEQwygNk_UPjhQw8WrfRLvYUJ4AKk7E6rAU=") center center/cover no-repeat;
     height: 35vh;
     width: 100%;
     color: white;
@@ -177,7 +177,7 @@ video {
 }
 
 .heroLegislation {
-    background: url("https://cdn.pixabay.com/photo/2014/05/06/19/00/adler-339125_960_720.jpg") center center/cover no-repeat;
+    background: url("https://cdn.pixabay.com/photo/2018/09/09/18/04/judge-3665164__340.jpg") center center/cover no-repeat;
     height: 35vh;
     width: 100%;
     color: white;
@@ -408,7 +408,7 @@ video {
     align-items: left;
 }
 
-.myCard3 {
+.my-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -423,7 +423,7 @@ video {
     padding: 30px;
 }
 
-.myCard4 {
+.my-card-2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -684,21 +684,6 @@ video {
     text-align: center;
 }
 
-.myCard {
-    padding: 30px;
-    height: 300px;
-}
-
-.myCard2 {
-    margin-top: 13px;
-    margin-bottom: 13px;
-    padding-left: 25px;
-    color: black;
-    text-align: left;
-    justify-content: left;
-    align-items: left;
-}
-
 .forum-card {
     margin: 3%;
     background-color: white;
@@ -720,7 +705,7 @@ video {
     border: 1px solid rgba(0, 0, 0, 0.500);
 }
 
-.forum-card-reversed {
+.dark-form {
     margin: 3%;
     background-color: #212529;
     color: white;
@@ -739,7 +724,7 @@ video {
     overflow: hidden;
 }
 
-.forum-card-reversed-full {
+.dark-form-full {
     background-color: #212529;
     color: white;
     text-align: left;
@@ -794,14 +779,6 @@ video {
     align-items: left;
     border-radius: 4px;
     border-color: dimgray;
-}
-
-.myCardInfo {
-    width: 100px;
-    height: 200px;
-    margin-top: 25px;
-    padding: 25px;
-    color: white;
 }
 
 .card {

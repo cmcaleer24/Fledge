@@ -8,7 +8,7 @@ import { useAppContext } from '../store';
 function Register() {
   const navigate = useNavigate();
   const appState = useAppContext();
-  const [loginErrorMessage, setLoginErrorMessage] = useState('');
+  //const [loginErrorMessage, setLoginErrorMessage] = useState('');
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

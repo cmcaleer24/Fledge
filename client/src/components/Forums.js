@@ -3,11 +3,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 import { Card, Nav } from 'react-bootstrap';
 import Axios from 'axios';
 import ShowReplies from './ShowReplies';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function Forums(props) {
   const isLoggedIn = props.status === 'logged in';
@@ -22,7 +21,7 @@ function Forums(props) {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [replyText, setReplyText] = useState('');
-  const navigate = useNavigate();
+  const navigate = useLocation();
   const [postId, setPostId] = useState('');
 
   useEffect(() => {
@@ -88,7 +87,7 @@ function Forums(props) {
 
       {addForm && (
         <>
-          <div className="forum-card-reversed">
+          <div className="dark-form">
             <Card.Body>
               <div align="center">
                 <h5 className="text-titles">Add a Post</h5>
@@ -128,54 +127,52 @@ function Forums(props) {
         </>
       )}
 
-      {postsArray.map((val) => {
+      {postsArray.map((post) => {
         return (
           <>
-            <Card className="myCard4">
+            <Card className="my-card-2">
               <Card.Body>
                 <Nav.Link
                   as={Link}
                   className="ms-auto"
-                  to={`/profile/${val.username}`}
+                  to={`/profile/${post.username}`}
                 >
                   <Card.Title>
                     <div className="inline-container">
-                      <img class="profile-image-forum" src={val.photo}></img>
-                      <div>&nbsp;{val.username}</div>
+                      <img class="profile-image-forum" src={post.photo}></img>
+                      <div>&nbsp;{post.username}</div>
                     </div>
                   </Card.Title>
                 </Nav.Link>
-                <Card.Title>{val.title}</Card.Title>
+                <Card.Title>{post.title}</Card.Title>
                 <Card.Text>
-                  <em> {val.message} </em>
+                  <em> {post.message} </em>
                 </Card.Text>
                 {isLoggedIn && !replyForm && (
                   <div align="right">
                     <a
                       class="btn-add-reply"
                       role="button"
-                      onClick={
-                        () => {
-                          setPostId(val.id);
-                          setReplyForm(true);
-                          setReplyFormState({
-                            ...replyFormState,
-                            [val.id]: replyFormState[val.id]
-                              ? !replyFormState[val.id]
-                              : true,
-                          });
-                        }
-                        //if replyState[val.id] exists, return the opposite boolean
+                      onClick={() => {
+                        setPostId(post.id);
+                        setReplyForm(true);
+                        //if replyState[post.id] exists, return the opposite boolean
                         //if not then its the first time its been clicked, so it is true
-                      }
+                        setReplyFormState({
+                          ...replyFormState,
+                          [post.id]: replyFormState[post.id]
+                            ? !replyFormState[post.id]
+                            : true,
+                        });
+                      }}
                     >
                       Add Reply
                     </a>
                   </div>
                 )}
-                {replyFormState[val.id] && (
+                {replyFormState[post.id] && (
                   <>
-                    <div className="forum-card-reversed">
+                    <div className="dark-form">
                       <Card.Body>
                         <div align="center">
                           <h5 className="text-titles">Add a Reply</h5>
@@ -209,18 +206,16 @@ function Forums(props) {
                 <details>
                   <summary
                     onClick={() =>
-                      //if replyState[val.id] exists, return the opposite boolean
-                      //if not then its the first time its been clicked, so it is true
                       setReplyState({
                         ...replyState,
-                        [val.id]: replyState[val.id]
-                          ? !replyState[val.id]
+                        [post.id]: replyState[post.id]
+                          ? !replyState[post.id]
                           : true,
                       })
                     }
                   >
                     <span>View Replies</span>
-                    {replyState[val.id] && <ShowReplies id={val.id} />}
+                    {replyState[post.id] && <ShowReplies id={post.id} />}
                   </summary>
                 </details>
               </Card.Body>

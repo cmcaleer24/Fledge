@@ -15,7 +15,6 @@ import {
   Marker,
   InfoWindow,
 } from 'react-google-maps';
-import { ToastsContainer, ToastsStore } from 'react-toasts';
 
 function Profile(props) {
   const [progress, setProgress] = useState(0);
@@ -23,9 +22,7 @@ function Profile(props) {
   const propUser = props.userName;
   const [thisUser, setThisUser] = useState(undefined);
   const [thisPropUser, setThisPropUser] = useState(undefined);
-  const [photo, set] = useState(undefined);
   const { user } = useParams(undefined);
-  const [sameUser, setSameUser] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [sightingsArray, setSightingsArray] = useState([]);
   const [showPhotoForm, setShowPhotoForm] = useState(false);
@@ -37,10 +34,6 @@ function Profile(props) {
   const [propId, setPropId] = useState();
   const [text, setText] = useState();
   const navigate = useNavigate();
-
-  // const [image, setImage] = useState(null);
-  // const [url, setUrl] = useState(null);
-  // const navigate = useNavigate();
 
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -70,11 +63,6 @@ function Profile(props) {
       (error) => console.log(error),
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          // Axios.post('http://localhost:3001/api/submitUserPhoto', {
-          //   downloadURL,
-          //   user,
-          // });
-          // setUrl(downloadURL);
           console.log('URL ', downloadURL, 'User: ', user);
           sendUrl(downloadURL);
         });
@@ -103,11 +91,6 @@ function Profile(props) {
     Axios.get(`http://localhost:3001/api/getUser/${user}`).then((response) => {
       setThisUser(response.data);
       setUserId(response.data.id);
-      // console.log('This user Object:', thisUser);
-      // console.log('The User ID:', userId);
-      if (response.data.username === props.userName) {
-        setSameUser(true);
-      }
     });
   }, []);
 
@@ -130,7 +113,7 @@ function Profile(props) {
   };
 
   useEffect(() => {
-    Axios.get(`http://localhost:3001/api/getUserSightings/${user}`).then(
+    Axios.get(`http://localhost:3001/api/getUserSightingsNotNull/${user}`).then(
       (response) => {
         setSightingsArray(response.data);
       }
@@ -145,7 +128,7 @@ function Profile(props) {
             <h1 class="display-4"> {username} </h1>
           </div>
 
-          {isLoggedIn && !sameUser && !showForm && (
+          {propUser && propUser != user && !showForm && (
             <>
               <div className="container">
                 <br></br>
@@ -165,7 +148,7 @@ function Profile(props) {
 
           {showForm && (
             <>
-              <div className="forum-card-reversed">
+              <div className="dark-form">
                 <Card.Body>
                   <div align="center">
                     <h5 className="text-titles">Send Message to {user}</h5>
@@ -205,7 +188,7 @@ function Profile(props) {
                   <h5>About Me</h5>
                   <p>{description}</p>
                 </div>
-                {isLoggedIn && sameUser && (
+                {propUser === user && (
                   <>
                     {!showTextForm && (
                       <button
@@ -227,7 +210,7 @@ function Profile(props) {
               <div className="column-left">
                 <>
                   <>
-                    <div className="forum-card-reversed-full">
+                    <div className="dark-form-full">
                       <Card.Body>
                         <form>
                           <div
@@ -263,7 +246,7 @@ function Profile(props) {
               <div>
                 <img className="profile-image" src={photo} />
               </div>
-              {isLoggedIn && sameUser ? (
+              {propUser === user ? (
                 <>
                   {!showPhotoForm && (
                     <div>
@@ -281,7 +264,7 @@ function Profile(props) {
 
                   {showPhotoForm && (
                     <>
-                      <div className="forum-card-reversed">
+                      <div className="dark-form">
                         <Card.Body>
                           <form onSubmit={formHandler}>
                             <input
@@ -316,7 +299,11 @@ function Profile(props) {
                               Upload
                             </button>
                           </form>
-                          {showProgress && <p>Uploading done {progress}%</p>}
+                          {showProgress && (
+                            <p className="text-titles">
+                              Uploading done {progress}%
+                            </p>
+                          )}
                         </Card.Body>
                       </div>
                     </>

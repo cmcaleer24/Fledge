@@ -12,7 +12,6 @@ import Info from './components/Info';
 import All from './components/All';
 import Category from './components/Category';
 import Login from './components/Login';
-import Contact from './components/Contact';
 import Register from './components/Register';
 import Bird from './components/Bird';
 import Profile from './components/Profile';
@@ -24,25 +23,32 @@ import Equipment from './components/Equipment';
 import Axios from 'axios';
 import { AppContext } from './store';
 
+//PRIMARY APP FUNCTION
 function App() {
+  Axios.defaults.withCredentials = true;
+
+  //INITIALISE CONTEXT VARIABLES
   const [status, setStatus] = useState('not logged in');
   const [userName, setUserName] = useState('');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
 
+  //SET LOGGED IN AND USERNAME
   useEffect(() => {
-    Axios.get('http://localhost:3001/api/login', {
-      withCredentials: true,
-    }).then((response) => {
-      console.log(response);
-      if (response.data.loggedIn === true) {
-        //console.log(response);
-        setStatus('logged in');
-        setUserName(response.data.user[0].username);
-        console.log('starting...', status);
-      }
-    });
-  }, []);
+    if (!userName) {
+      Axios.get('http://localhost:3001/api/login').then((response) => {
+        if (response.data.loggedIn === true) {
+          setStatus('logged in');
+          setUserName(response.data.user[0].username);
+          console.log('starting...', status, 'user...', userName);
+        }
+      });
+    }
+  }, [userName, status]);
+
+  // useEffect(() => {
+  //   console.log('THIS STATUS:: ', status, 'THIS USERNAME: ', userName);
+  // });
 
   return (
     <>
@@ -72,7 +78,10 @@ function App() {
               <Route path="/equipment" element={<Equipment />} />
               <Route path="/legislation" element={<Legislation />} />
               <Route path="/category/:id" element={<Category />} />
-              <Route path="/login" element={<Login />} />
+              <Route
+                path="/login"
+                element={<Login status={status} userName={userName} />}
+              />
               <Route
                 path="/bird/:id"
                 element={
@@ -84,9 +93,14 @@ function App() {
                   />
                 }
               />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/register" element={<Register />} />
+              <Route
+                path="/logout"
+                element={<Logout status={status} userName={userName} />}
+              />
+              <Route
+                path="/register"
+                element={<Register status={status} userName={userName} />}
+              />
               <Route
                 path="/messages/:user"
                 element={<Messages status={status} userName={userName} />}

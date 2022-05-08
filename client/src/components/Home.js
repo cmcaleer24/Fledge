@@ -10,27 +10,27 @@ function Home(props) {
 
   return (
     <div className="main-body">
-      {!isLoggedIn && (
+      {isLoggedIn ? (
+        <div className="hero">
+          <h1 class="display-4">Welcome back {user}!</h1>
+          <hr class="my-4"></hr>
+        </div>
+      ) : (
         <div className="hero">
           <h1 class="display-4">Welcome to fledge!</h1>
           <p class="lead">The birdwatching companion app.</p>
           <hr class="my-4"></hr>
           <p>Take flight on your journey today</p>
-          <a class="btn-trans-main" href="/register" role="button">
-            Get Started
-          </a>
-        </div>
-      )}
-
-      {isLoggedIn && (
-        <div className="hero">
-          <h1 class="display-4">Welcome back {user}!</h1>
-          <hr class="my-4"></hr>
+          <Nav.Link as={Link} to="/register">
+            <a class="btn-trans-main" role="button">
+              Get Started
+            </a>
+          </Nav.Link>
         </div>
       )}
 
       <Nav.Link as={Link} to="/Info">
-        <Card className="myCard4">
+        <Card className="my-card-2">
           <Card.Img
             className="home-card-image"
             variant="bottom"
@@ -46,8 +46,22 @@ function Home(props) {
         </Card>
       </Nav.Link>
 
+      <Nav.Link as={Link} to="/Feed">
+        <Card className="my-card-2">
+          <Card.Img
+            className="home-card-image"
+            variant="bottom"
+            src="https://cdn.pixabay.com/photo/2018/11/30/10/13/winter-feeding-3847425__340.jpg"
+          />
+          <Card.Body>
+            <Card.Title>Feed</Card.Title>
+            <Card.Text>See what our Fledgelings have been up to!</Card.Text>
+          </Card.Body>
+        </Card>
+      </Nav.Link>
+
       <Nav.Link as={Link} to="/Forums">
-        <Card className="myCard3">
+        <Card className="my-card">
           <Card.Img
             className="home-card-image"
             variant="bottom"
@@ -63,7 +77,7 @@ function Home(props) {
       </Nav.Link>
 
       <Nav.Link as={Link} to="/Guides">
-        <Card className="myCard3">
+        <Card className="my-card">
           <Card.Img
             className="home-card-image"
             variant="bottom"

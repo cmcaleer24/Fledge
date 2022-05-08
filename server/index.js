@@ -4,9 +4,7 @@ const cors = require("cors");
 const app = express();
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
-const axios = require("axios");
 const session = require("express-session");
-const { useParams } = require("react-router-dom");
 const saltRounds = 10;
 
 //CONNECTION
@@ -126,7 +124,7 @@ app.get(`/api/getPropUser/:propUser`, (req, res) => {
   });
 });
 
-//GET RECEIVED MESSAGES  A TO PARTICULAR USER
+//GET RECEIVED MESSAGES TO PARTICULAR USER
 app.get("/api/getMessages/:user", (req, res) => {
   const [result1, setResult] = [];
   const { user } = req.params;
@@ -137,7 +135,8 @@ app.get("/api/getMessages/:user", (req, res) => {
   FROM fledge.dms 
   LEFT JOIN fledge.users ON fledge.dms.to_id = users.id
   LEFT JOIN fledge.users AS from_user ON fledge.dms.from_id = from_user.id
-  WHERE fledge.users.username = '${user}'; `;
+  WHERE fledge.users.username = '${user}'
+  ORDER BY fledge.dms.id DESC`;
   db.query(sqlSelect, (err, result) => {
     res.send(result);
   });
@@ -154,7 +153,8 @@ app.get("/api/getSentMessages/:user", (req, res) => {
   FROM fledge.dms 
   LEFT JOIN fledge.users ON fledge.dms.from_id = users.id
   LEFT JOIN fledge.users AS to_user ON fledge.dms.to_id = to_user.id
-  WHERE fledge.users.username = '${user}'; `;
+  WHERE fledge.users.username = '${user}'
+  ORDER BY fledge.dms.id DESC`;
   db.query(sqlSelect, (err, result) => {
     res.send(result);
   });
@@ -209,6 +209,18 @@ app.get("/api/getUserSightings/:user", (req, res) => {
   });
 });
 
+//GET SIGHTINGS FOR A PARTICULAR USER THAT HAVE A PHOTO
+app.get("/api/getUserSightingsNotNull/:user", (req, res) => {
+  const [result1, setResult] = [];
+  const { user } = req.params;
+  const sqlSelect = `SELECT bird_id, name, date, latitude, longitude, user, photo FROM fledge.sightings
+  INNER JOIN  fledge.unique ON fledge.unique.id = fledge.sightings.bird_id
+  WHERE user = '${user}' AND fledge.sightings.photo IS NOT NULL`;
+  db.query(sqlSelect, (err, result) => {
+    res.send(result);
+  });
+});
+
 //GET ALL USER SIGHTINGS
 app.get("/api/getAllUserSightings", (req, res) => {
   const [result1, setResult] = [];
@@ -217,7 +229,7 @@ app.get("/api/getAllUserSightings", (req, res) => {
   JOIN fledge.unique ON fledge.unique.id = fledge.sightings.bird_id 
   INNER JOIN fledge.users ON fledge.sightings.user = fledge.users.username
   WHERE fledge.sightings.user IS NOT NULL 
-  ORDER BY fledge.sightings.date DESC`;
+  ORDER BY fledge.sightings.id DESC`;
   db.query(sqlSelect, (err, result) => {
     res.send(result);
   });
@@ -248,7 +260,10 @@ app.post("/api/register", (req, res) => {
 
   bcrypt.hash(password, saltRounds, (err, hash) => {
     db.query(sqlInsert, [username, hash, emailAdd], (err, result) => {
-      console.log("this should be null", err);
+      //Endpoint Test
+      if (result) {
+        res.status(201).json({ message: "success" });
+      }
     });
   });
 });
@@ -264,20 +279,28 @@ app.post("/api/addmessage", (req, res) => {
 
   db.query(sqlInsert, [propId, userId, text], (err, result) => {
     console.log(err);
+    //Endpoint Test
+    if (result) {
+      res.status(201).json({ message: "success" });
+    }
   });
 });
 
-//ADD PHOTO - REDUNDANT FOR NOW
-app.post("/api/submitPhoto/:id", (req, res) => {
-  const user = req.body.user;
-  const url = req.body.url;
-  const { id } = req.params;
+//ADD DIRECT MESSAGE REPLY
+app.post("/api/addmessageReply", (req, res) => {
+  const propId = req.body.propId;
+  const userId = req.body.userId;
+  const text = req.body.text;
 
   const sqlInsert =
-    "INSERT INTO fledge.user_photos (username, photo, bird_id) VALUES (? , ?, ?)";
+    "INSERT INTO fledge.dms (id, from_id, to_id, message) VALUES (null, ?, ?, ?)";
 
-  db.query(sqlInsert, [user, selectedFile, id], (err, result) => {
+  db.query(sqlInsert, [userId, propId, text], (err, result) => {
     console.log(err);
+    //Endpoint Test
+    if (result) {
+      res.status(201).json({ message: "success" });
+    }
   });
 });
 
@@ -290,6 +313,10 @@ app.post("/api/submitUserPhoto", (req, res) => {
 
   db.query(sqlInsert, [url, user], (err, result) => {
     console.log(err);
+    //Endpoint Test
+    if (result) {
+      res.status(201).json({ message: "success" });
+    }
   });
 });
 
@@ -303,6 +330,10 @@ app.post("/api/addDescription", (req, res) => {
 
   db.query(sqlInsert, [text, user], (err, result) => {
     console.log(err);
+    //Endpoint Test
+    if (result) {
+      res.status(201).json({ message: "success" });
+    }
   });
 });
 
@@ -317,6 +348,10 @@ app.post("/api/addForumPost", (req, res) => {
 
   db.query(sqlInsert, [user, title, text], (err, result) => {
     console.log(err);
+    //Endpoint Test
+    // if (result) {
+    //   res.status(201).json({ message: "success" });
+    // }
   });
 });
 
@@ -329,6 +364,10 @@ app.post("/api/addForumReply", (req, res) => {
     "INSERT INTO fledge.forum_replies (id, post_id, username, message) VALUES (null, ? , ?, ?)";
   db.query(sqlInsert, [postId, user, replyText], (err, result) => {
     console.log(err);
+    //Endpoint Test
+    if (result) {
+      res.status(201).json({ message: "success" });
+    }
   });
 });
 
@@ -341,6 +380,10 @@ app.post("/api/addSightingComment", (req, res) => {
     "INSERT INTO fledge.sighting_comments (id, sighting_id, user, comment) VALUES (null, ?, ?, ?)";
   db.query(sqlInsert, [sightingId, user, commentText], (err, result) => {
     console.log(err);
+    //Endpoint Test
+    if (result) {
+      res.status(201).json({ message: "success" });
+    }
   });
 });
 
@@ -358,6 +401,10 @@ app.post("/api/addSighting", (req, res) => {
 
   db.query(sqlInsert, [id, date, lat, long, user, url], (err, result) => {
     console.log(err);
+    //Endpoint Test
+    if (result) {
+      res.status(201).json({ message: "success" });
+    }
   });
 });
 
@@ -374,12 +421,15 @@ app.post("/api/addSightingOnly", (req, res) => {
 
   db.query(sqlInsert, [id, date, lat, long, user], (err, result) => {
     console.log(err);
+    //Endpoint Test
+    if (result) {
+      res.status(201).json({ message: "success" });
+    }
   });
 });
 
-// //LOG IN (GET)
+//LOG IN (GET)
 app.get("/api/login", (req, res) => {
-  // console.log(req.session);
   if (req.session.user) {
     res.send({
       loggedIn: true,
@@ -396,16 +446,17 @@ app.get("/api/login", (req, res) => {
 app.post("/api/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-  console.log("user", username, password);
+
   const sqlValidate = "SELECT * FROM fledge.users WHERE username = ?";
   db.query(sqlValidate, username, (err, data) => {
     if (err) {
-      console.log("this happens:", err);
-      res.status(404).json({ message: err.message });
+      console.log(err);
     }
-
+    //Endpoint Test
+    // if (data) {
+    //   res.status(201).json({ message: "success" });
+    // }
     if (data.length > 0) {
-      //res.send(data);
       bcrypt.compare(password, data[0].password, (error, thisResponse) => {
         if (thisResponse) {
           req.session.user = data;
@@ -421,13 +472,17 @@ app.post("/api/login", (req, res) => {
   });
 });
 
-// const deleteCookie = (name) => {
-//   document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-// };
+const deleteCookie = (name) => {
+  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+};
 
 //LOG OUT
 app.post("/api/logout", (req, res) => {
   req.session.destroy();
+  //Endpoint Test
+  // if (res) {
+  //   res.status(201).json({ message: "success" });
+  // }
 });
 
 //LISTENER

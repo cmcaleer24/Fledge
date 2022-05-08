@@ -11,3 +11,4 @@ const defaultState = {
 
 export const AppContext = createContext(defaultState);
 export const useAppContext = () => useContext(AppContext);
+
